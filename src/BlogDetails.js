@@ -33,8 +33,16 @@ const BlogDetails = () => {
 					<h2>{blog.title}</h2>
 					<p>Written by {blog.author}</p>
 					<div>{blog.body}</div>
-					{!isDeleting && <button onClick={handleClick}>Delete Blog</button>}
-					{isDeleting && <button disabled>Deleting...</button>}
+					{!isDeleting && (
+						<button className="btn" onClick={handleClick}>
+							Delete Blog
+						</button>
+					)}
+					{isDeleting && (
+						<button className="btn" disabled>
+							Deleting...
+						</button>
+					)}
 				</article>
 			)}
 		</div>
