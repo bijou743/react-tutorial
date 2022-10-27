@@ -1,6 +1,5 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useFetch from './useFetch';
-import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 
 const BlogDetails = () => {
@@ -11,7 +10,7 @@ const BlogDetails = () => {
 		isPending,
 	} = useFetch('http://localhost:8000/blogs/' + id);
 	const [isDeleting, setIsDeleting] = useState(false);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const handleClick = () => {
 		setIsDeleting(true);
@@ -19,7 +18,7 @@ const BlogDetails = () => {
 		fetch('http://localhost:8000/blogs/' + id, {
 			method: 'DELETE',
 		}).then(() => {
-			history.push('/');
+			navigate('/');
 			setIsDeleting(false);
 		});
 	};
